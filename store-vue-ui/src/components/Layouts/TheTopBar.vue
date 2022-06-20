@@ -14,7 +14,7 @@
              <!-- hover:border-b-2 hover:border-blue-500 hover:duration-300 -->
         </nav>
         <nav class="left flex h-full justify-center items-center gap-2 pt-2">
-            <button class=" p-2">Login</button>
+            <button class="rounded-xl px-2 py-1 mr-2 hover:outline outline-1 hover:outline-offset-1">Login</button>
             <button class=" rounded-xl px-2 py-1 outline outline-1  outline-offset-1 hover:outline-double hover:outline-offset-2">Sign up</button>
         </nav>
     </header>
@@ -80,5 +80,9 @@ a:hover::after {
     height: 50%;
     transform: translate(0%, 50%);
     background: #c0c0c0;
+}
+button {
+    transition: outline-offset 300ms ease, outline-style 300ms ease, outline-width 300ms ease;
+
 }
 </style>
