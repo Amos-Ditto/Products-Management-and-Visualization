@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import TheTopBarVue from '@/components/Layouts/TheTopBar.vue';
-</script>
-
 <template>
   <main class="w-full h-full flex flex-col">
     <section class="header w-full h-16 bg-red">
@@ -18,7 +14,7 @@ import TheTopBarVue from '@/components/Layouts/TheTopBar.vue';
             Lets handle your Products and Data.
           </h2>
           <h3 class=" leading-relaxed antialiased mt-12 w-10/12 text-md">
-            It's crafted to group and categorize your products and data with simplicity and all modern approaches.
+            It's crafted to group and categorize your products and data with simplicity in all modern approaches.
             It's is usable, robust and scalable software.
           </h3>
           <div class="buttons mt-4 p-2 w-1/2 flex justify-start">
@@ -26,12 +22,28 @@ import TheTopBarVue from '@/components/Layouts/TheTopBar.vue';
           </div>
         </div>
       </div>
-      <div class="right w-1/2 h-full p-4">
-        <img src="@/assets/img/undraw_all_the_data_re_hh4w.svg" alt="" class=" rounded-md object-cover w-full h-full contrast-125">
+      <div class="right w-1/2 h-full bg-[url('@/assets/img/undraw_all_the_data_re_hh4w.svg')] bg-inherit bg-cover">
+        <!-- <img src="@/assets/img/undraw_all_the_data_re_hh4w.svg" alt="" class=" rounded-md object-cover w-full h-full contrast-125 sm:h-4/5 sm:w-4/5 sm:scale-75"> -->
       </div>
     </section>
+    <footer class="w-full text-gray-100 bg-zinc-900 h-28 fixed bottom-0 left-0 flex justify-center items-center gap-20 xl:gap-32">
+      <div class="status h-full w-40 gap-3 flex justify-center items-center">
+        <span class="text-5xl">98%</span>
+        <p>data accuracy</p>
+      </div>
+      <div class="status h-full w-40 gap-3 leading-tight flex justify-center items-center">
+        <span class="text-5xl">2.5x</span>
+        <p>Handling data</p>
+      </div>
+    </footer>
   </main>
 </template>
+
+<script setup lang="ts">
+import TheTopBarVue from '@/components/Layouts/TheTopBar.vue';
+
+</script>
+
 
 <style scoped>
 
@@ -43,7 +55,7 @@ import TheTopBarVue from '@/components/Layouts/TheTopBar.vue';
   content: '';
   top: 0%;
   left: 0%;
-  width: 100%;
+  width: 90%;
   height: 1.5px;
   background: rgb(74 222 128);
 }

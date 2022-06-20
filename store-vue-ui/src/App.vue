@@ -1,6 +1,6 @@
 <template>
-  <main class="h-screen w-screen overflow-x-hidden bg-zinc-50" :class="isDark ? 'dark' : ''">
-    <section class="w-full h-full">
+  <main class="h-screen w-screen overflow-x-hidden bg-zinc-5" :class="isDark ? 'dark' : ''">
+    <section class="w-full h-full bg-inherit">
       <RouterView />
     </section>
   </main>
@@ -10,7 +10,7 @@
 import { ref } from "vue";
 import { RouterView } from "vue-router";
 
-const isDark = ref<boolean>(false)
+const isDark = ref<boolean>(true);
 
 </script>
 
