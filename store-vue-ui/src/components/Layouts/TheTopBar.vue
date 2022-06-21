@@ -6,7 +6,7 @@
                 <h3 class="text-xl font-extrabold ml-4">Store</h3>
             </div>
             <div class="links flex gap-6 items-center justify-start h-full ml-2 relative pt-2 md:ml-4">
-                <RouterLink to="/" class="ml-4 text-sm flex items-center px-2 h-full">Home</RouterLink>
+                <RouterLink :to="{ name:'dashboard' }" class="ml-4 text-sm flex items-center px-2 h-full">Home</RouterLink>
                 <RouterLink to="/" class="ml-4 text-sm flex items-center px-2 h-full">Products</RouterLink>
                 <RouterLink to="/" class="ml-4 text-sm flex items-center px-2 h-full">Sell</RouterLink>
                 <RouterLink to="/" class="ml-4 text-sm flex items-center px-2 h-full">Admin</RouterLink>
