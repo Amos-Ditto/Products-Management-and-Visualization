@@ -17,23 +17,23 @@
             It's crafted to group and categorize your products and data with simplicity in all modern approaches.
             It's is usable, robust and scalable software.
           </h3>
-          <div class="buttons mt-4 p-2 w-1/2 flex justify-start">
-            <button class="bg-gray-900 text-slate-50 py-2 px-4 text-base rounded-full">Get Started</button>
+          <div class="buttons p-2 w-1/2 h-20 flex justify-start items-center">
+            <button class="bg-gray-900 text-slate-50 py-2 px-4 text-base rounded-full hover:py-2.5 hover:px-5 duration-300">Get Started</button>
           </div>
         </div>
       </div>
-      <div class="right w-1/2 h-full bg-[url('@/assets/img/undraw_all_the_data_re_hh4w.svg')] bg-inherit bg-cover">
+      <div class="right w-1/2 h-full bg-[url('@/assets/img/undraw_All_the_data_re_hh4w.png')] bg-inherit bg-cover">
         <!-- <img src="@/assets/img/undraw_all_the_data_re_hh4w.svg" alt="" class=" rounded-md object-cover w-full h-full contrast-125 sm:h-4/5 sm:w-4/5 sm:scale-75"> -->
       </div>
     </section>
     <footer class="w-full text-gray-100 bg-zinc-900 h-28 fixed bottom-0 left-0 flex justify-center items-center gap-20 xl:gap-32">
       <div class="status h-full w-40 gap-3 flex justify-center items-center">
         <span class="text-5xl">98%</span>
-        <p>data accuracy</p>
+        <p>data accuracy.</p>
       </div>
       <div class="status h-full w-40 gap-3 leading-tight flex justify-center items-center">
         <span class="text-5xl">2.5x</span>
-        <p>Handling data</p>
+        <p>Handling data.</p>
       </div>
     </footer>
   </main>
@@ -58,5 +58,8 @@ import TheTopBarVue from '@/components/Layouts/TheTopBar.vue';
   width: 90%;
   height: 1.5px;
   background: rgb(74 222 128);
+}
+button {
+  transition-property: padding;
 }
 </style>
