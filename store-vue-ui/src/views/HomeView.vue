@@ -18,7 +18,7 @@
             It's is usable, robust and scalable software.
           </h3>
           <div class="buttons p-2 w-1/2 h-20 flex justify-start items-center">
-            <button class="bg-gray-900 text-slate-50 py-2 px-4 text-base rounded-full hover:py-2.5 hover:px-5 duration-300">Get Started</button>
+            <button class="bg-gray-900 text-slate-50 py-2 px-4 text-base rounded-full hover:py-2.5 hover:px-5 duration-300" @click="redirectHome">Get Started</button>
           </div>
         </div>
       </div>
@@ -41,7 +41,13 @@
 
 <script setup lang="ts">
 import TheTopBarVue from '@/components/Layouts/TheTopBar.vue';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
+
+let redirectHome = (): void => {
+  router.push("dashboard");
+}
 </script>
 
 
