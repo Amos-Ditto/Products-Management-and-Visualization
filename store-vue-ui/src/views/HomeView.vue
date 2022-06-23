@@ -43,6 +43,7 @@
 import TheTopBarVue from '@/components/Layouts/TheTopBar.vue';
 import { useRouter } from 'vue-router';
 
+
 const router = useRouter();
 
 let redirectHome = (): void => {

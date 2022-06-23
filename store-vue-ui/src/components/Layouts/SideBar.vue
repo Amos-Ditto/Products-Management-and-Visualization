@@ -2,36 +2,55 @@
     <nav class="sidebar flex flex-col w-full justify-start items-start overflow-y-hidden mb-8">
         <div class="logo w-full h-12 sm:h-14 flex flex-row items-center justify-center gap-1 sm:gap-5 bg-neutral-700">
             <IconEcosystem class="logo-img scale-110 sm:scale-150"/>
-            <h4 class=" text-lg sm:text-2xl font-bold sm:font-extrabold">Sto<span class=" text-green-500">re</span></h4>
+            <h4 class=" text-lg sm:text-2xl font-bold sm:font-extrabold" :class="toggleclass && 'hidden'">Sto<span class=" text-green-500">re</span></h4>
+        </div>
+        <div
+            class="toggler-menu text-2xl flex bg-inherit cursor-pointer"
+            :class="toggleclass ? 'relative w-full justify-center items-center mt-4' : 'absolute right-2.5 top-16'"
+            v-show="showtogglebtns" @click="toggleMenu"
+        >
+            <div class="i-mdi-forwardburger block hover:scale-110" v-show="toggleclass" />
+            <div class="i-mdi-close block" v-show="!toggleclass" />
         </div>
         <section class="flex flex-col w-full items-start mt-12 overflow-y-auto overflow-x-hidden">
             <RouterLink :to="{ name:'homeview' }" class="link flex flex-col w-full relative bg-neutral-900" @click="mainLinks">
-                <div class="main-link flex flex-row items-center w-full h-14  gap-2 px-3 bg-neutral-800 hover:bg-neutral-700 duration-200">
+                <div
+                    class="main-link flex flex-row items-center w-full h-14  gap-2 px-3 bg-neutral-800 hover:bg-neutral-700 duration-200"
+                    :class="toggleclass && 'justify-center'"
+                >
                     <div class="i-mdi-home text-xl sm:text-2xl" />
-                    <p class=" sm:font-bold text-base sm:text-base">Dashboard</p>
+                    <p class=" sm:font-bold text-base sm:text-base" :class="toggleclass && 'hidden'">Dashboard</p>
                 </div>
             </RouterLink>
             <RouterLink :to="{ name:'products' }" class="link flex flex-col w-full relative bg-neutral-900">
-                <div class="main-link relative flex flex-row items-center w-full h-14  gap-2 px-3 bg-neutral-800 hover:bg-neutral-700 duration-200" @click="showProducts">
+                <div
+                    class="main-link relative flex flex-row items-center w-full h-14  gap-2 px-3 bg-neutral-800 hover:bg-neutral-700 duration-200"
+                    :class="toggleclass && 'justify-center'" @click="showProducts"
+                >
                     <div class="i-mdi-folder text-xl sm:text-2xl" />
-                    <p class=" sm:font-bold text-base">Products</p>
-                    <div class="i-mdi-chevron-right text-sm sm:text-xl absolute right-2" />
+                    <p class=" sm:font-bold text-base" :class="toggleclass && 'hidden'">Products</p>
+                    <div class="i-mdi-chevron-right text-sm sm:text-xl absolute right-2" :class="toggleclass && 'hidden'" />
                 </div>
                 <transition name="dropdown-menu" @enter="enter" @after-enter="afterEnter" @leave="leave">
                     <div class="sub-links w-full flex items-end justify-end flex-col" v-show="menutoggle.products">
                         <button
                             class=" w-[90%] sm:w-[86%] h-10 text-xs font-bold border-l border-neutral-700 text-left px-7 hover:bg-neutral-800 relative"
+                            :class="toggleclass && 'hidden'"
                         >Add</button>
                         <button
                             class=" w-[90%] sm:w-[86%] h-10 text-xs font-bold border-l border-neutral-700 text-left px-7 hover:bg-neutral-800 relative"
+                            :class="toggleclass && 'hidden'"
                         >Delete</button>
                     </div>
                 </transition>
             </RouterLink>
-            <RouterLink to="/" class="link flex flex-col w-full relative bg-neutral-900">
-                <div class="main-link flex flex-row items-center w-full h-14  gap-1 sm:gap-2 px-1 sm:px-4 bg-neutral-800 hover:bg-neutral-700 duration-200">
-                    <div class="i-mdi-home text-sm sm:text-2xl" />
-                    <p class=" sm:font-bold text-xs sm:text-base">Dashboard</p>
+            <RouterLink :to="{ name:'home' }" class="link flex flex-col w-full relative bg-neutral-900" @click="mainLinks">
+                <div
+                    class="main-link flex flex-row items-center w-full h-14  gap-2 px-3 bg-neutral-800 hover:bg-neutral-700 duration-200"
+                    :class="toggleclass && 'justify-center'"
+                >
+                    <div class="i-mdi-home text-xl sm:text-2xl" />
+                    <p class=" sm:font-bold text-base sm:text-base" :class="toggleclass && 'hidden'">Dashboard</p>
                 </div>
             </RouterLink>
         </section>
@@ -39,7 +58,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+
+import { onMounted, ref } from "vue";
 import IconEcosystem from "../icons/IconEcosystem.vue";
 
 interface toggleSideMenu {
@@ -50,6 +70,54 @@ interface toggleSideMenu {
 // reactive Data 
 
 const menutoggle = ref<toggleSideMenu>({'products': false, 'sales': false});
+const toggleclass = ref<boolean>(false);
+const showtogglebtns = ref<boolean>(false);
+
+// emits functions
+
+const emit = defineEmits<{
+    (event: 'resizeSideMenu'): void
+}>()
+
+// event on mounted listeners 
+
+const printOut = ():void => {
+    let screenwidth: number = window.outerWidth;
+    if ( screenwidth <= 930 ) {
+        showtogglebtns.value = true;
+        toggleclass.value = true;
+    } else {
+        showtogglebtns.value = false;
+        toggleclass.value = false;
+    }
+};
+
+window.addEventListener<"resize">('resize', printOut);
+onMounted((): void => {
+    let screenw: number = window.outerWidth;
+    if ( screenw <= 930 ) {
+        showtogglebtns.value = true;
+    }else {
+        showtogglebtns.value = false;
+    }
+})
+
+// methods
+
+const showProducts = ():void => {
+    menutoggle.value.products = !menutoggle.value.products;
+};
+const mainLinks = ():void => {
+    if (menutoggle.value.products == true) {
+        menutoggle.value.products = false;
+    }
+};
+
+const toggleMenu = ():void => {
+    toggleclass.value = !toggleclass.value;
+    emit('resizeSideMenu');
+
+};
 
 // sidemenu transitions methods
 
@@ -70,29 +138,19 @@ const leave = (el: HTMLElement): void => {
     el.style.height = getComputedStyle(el).height;
     getComputedStyle(el);
     setTimeout(() => {el.style.height = '0'});
-
 };
-
-// methods
-
-const showProducts = ():void => {
-    menutoggle.value.products = !menutoggle.value.products;
-};
-const mainLinks = ():void => {
-    if (menutoggle.value.products == true) {
-        menutoggle.value.products = false;
-    }
-};
-
 </script>
 
 
 <style scoped>
+/* @tailwind base; */
+@tailwind components;
+@tailwind utilities;
 
 /* Transitions */
 
 .dropdown-menu-enter-active, .dropdown-menu-leave-active {
-    transition: height 400ms ease-in-out;
+    transition: height 250ms ease-in-out;
     overflow: hidden;
 }
 nav section {
@@ -138,18 +196,6 @@ a:hover .main-link::before {
 .router-link-active .i-mdi-chevron-right {
     transform: rotate(90deg);
 }
-
-@keyframes dropdown {
-    0% {
-        height: 0%;
-    }
-    50% {
-        height: 50%;
-    }
-    100% {
-        height: 100%;
-    }
-}
 .sub-links button::before {
     position: absolute;
     content: '';
@@ -159,5 +205,12 @@ a:hover .main-link::before {
     width: 1.3rem;
     height: 1px;
 }
-
+@layer components {
+    .toggler-menu  .i-mdi-forwardburger {
+        @apply text-green-600;
+    }
+    .toggler-menu .i-mdi-close {
+        @apply text-red-500 hover:scale-110;
+    }
+}
 </style>
