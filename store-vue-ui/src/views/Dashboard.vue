@@ -3,9 +3,12 @@
         <template #aside>
             <SideBar class="" @resizeSideMenu="resizeSideMenu" />
         </template>
-        <main class="h-screen">
-            <router-view></router-view>
-        </main>
+        <template #default>
+            <main class="w-full flex flex-col">
+                <NavBarVue />
+                <router-view></router-view>
+            </main>
+        </template>
     </LayoutVue>
 </template>
 
@@ -13,11 +16,10 @@
 import { ref } from 'vue';
 import LayoutVue from '@/components/Layout.vue';
 import SideBar from '../components/Layouts/SideBar.vue';
+import NavBarVue from '@/components/Layouts/NavBar.vue';
 const reducedmenu = ref<boolean>(false);
 
 const resizeSideMenu = ():void => {
     reducedmenu.value = !reducedmenu.value;
-    console.log(reducedmenu.value);
-    
 };
 </script>

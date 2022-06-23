@@ -19,7 +19,8 @@ module.exports = {
     extend: {
       transitionProperty: {
         'height': 'height',
-        'width': 'width'
+        'width': 'width',
+        'rotate': 'rotate'
       }
     },
   },

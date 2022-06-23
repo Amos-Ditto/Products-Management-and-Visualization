@@ -9,7 +9,7 @@
             :class="toggleclass ? 'relative w-full justify-center items-center mt-4' : 'absolute right-2.5 top-16'"
             v-show="showtogglebtns" @click="toggleMenu"
         >
-            <div class="i-mdi-forwardburger block hover:scale-110" v-show="toggleclass" />
+            <div class="i-mdi-chevron-double-right block hover:scale-110" v-show="toggleclass" />
             <div class="i-mdi-close block" v-show="!toggleclass" />
         </div>
         <section class="flex flex-col w-full items-start mt-12 overflow-y-auto overflow-x-hidden">
@@ -43,15 +43,6 @@
                         >Delete</button>
                     </div>
                 </transition>
-            </RouterLink>
-            <RouterLink :to="{ name:'home' }" class="link flex flex-col w-full relative bg-neutral-900" @click="mainLinks">
-                <div
-                    class="main-link flex flex-row items-center w-full h-14  gap-2 px-3 bg-neutral-800 hover:bg-neutral-700 duration-200"
-                    :class="toggleclass && 'justify-center'"
-                >
-                    <div class="i-mdi-home text-xl sm:text-2xl" />
-                    <p class=" sm:font-bold text-base sm:text-base" :class="toggleclass && 'hidden'">Dashboard</p>
-                </div>
             </RouterLink>
         </section>
     </nav>
@@ -143,7 +134,6 @@ const leave = (el: HTMLElement): void => {
 
 
 <style scoped>
-/* @tailwind base; */
 @tailwind components;
 @tailwind utilities;
 
@@ -206,7 +196,7 @@ a:hover .main-link::before {
     height: 1px;
 }
 @layer components {
-    .toggler-menu  .i-mdi-forwardburger {
+    .toggler-menu  .i-mdi-chevron-double-right {
         @apply text-green-600;
     }
     .toggler-menu .i-mdi-close {
