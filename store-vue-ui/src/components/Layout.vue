@@ -1,11 +1,11 @@
 <template>
-    <main class="w-full h-full flex flex-row">
-        <aside class="h-full w-1/6 bg-neutral-800 text-white">
+    <main class="w-screen h-screen flex flex-row">
+        <aside class="h-screen w-[28%] mds:w-[20%] bg-neutral-800 text-white overflow-y-auto fixed left-0 top-0 mds:relative">
             <slot name="aside">
 
             </slot>
         </aside>
-        <section class="h-full">
+        <section class="h-screen">
             <slot>
 
             </slot>

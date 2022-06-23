@@ -1,9 +1,9 @@
 <template>
-    <LayoutVue class=" w-screen h-screen overflow-y-hidden xl:overflow-x-hidden">
+    <LayoutVue class=" w-screen overflow-y-hidden xl:overflow-x-hidden">
         <template #aside>
             <SideBar />
         </template>
-        <main class="h-full">
+        <main class="h-screen">
             <router-view></router-view>
         </main>
     </LayoutVue>

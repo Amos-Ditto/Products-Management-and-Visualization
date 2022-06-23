@@ -19,7 +19,6 @@
           </h3>
           <div class="buttons p-2 w-1/2 h-20 flex justify-start items-center">
             <button class="bg-gray-900 text-slate-50 py-3 px-6 text-base rounded-full hover:px-8 duration-300" @click="redirectHome">Get Started</button>
-            <!-- <div class="i-mdi-alarm" /> -->
           </div>
         </div>
       </div>
