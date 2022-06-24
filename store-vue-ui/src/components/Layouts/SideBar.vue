@@ -12,10 +12,10 @@
             <div class="i-mdi-chevron-double-right block hover:scale-110" v-show="toggleclass" />
             <div class="i-mdi-close block" v-show="!toggleclass" />
         </div>
-        <section class="flex flex-col w-full items-start mt-12 overflow-y-auto overflow-x-hidden">
+        <section class="flex flex-col w-full items-start mt-12 overflow-y-auto overflow-x-hidden gap-1">
             <RouterLink :to="{ name:'homeview' }" class="link flex flex-col w-full relative bg-neutral-900" @click="mainLinks">
                 <div
-                    class="main-link flex flex-row items-center w-full h-14  gap-2 px-3 bg-neutral-800 hover:bg-neutral-700 duration-200"
+                    class="main-link flex flex-row items-center w-full h-14  gap-2 px-3 bg-neutral-800 hover:bg-neutral-700 duration-200 border-y border-neutral-700"
                     :class="toggleclass && 'justify-center'"
                 >
                     <div class="i-mdi-home text-xl sm:text-2xl" />
@@ -24,7 +24,7 @@
             </RouterLink>
             <RouterLink :to="{ name:'products' }" class="link flex flex-col w-full relative bg-neutral-900">
                 <div
-                    class="main-link relative flex flex-row items-center w-full h-14  gap-2 px-3 bg-neutral-800 hover:bg-neutral-700 duration-200"
+                    class="main-link relative flex flex-row items-center w-full h-14  gap-2 px-3 bg-neutral-800 hover:bg-neutral-700 duration-200 border-y border-neutral-700"
                     :class="toggleclass && 'justify-center'" @click="showProducts"
                 >
                     <div class="i-mdi-folder text-xl sm:text-2xl" />
@@ -32,7 +32,7 @@
                     <div class="i-mdi-chevron-right text-sm sm:text-xl absolute right-2" :class="toggleclass && 'hidden'" />
                 </div>
                 <transition name="dropdown-menu" @enter="enter" @after-enter="afterEnter" @leave="leave">
-                    <div class="sub-links w-full flex items-end justify-end flex-col" v-show="menutoggle.products">
+                    <div class="sub-links w-full flex items-end justify-end flex-col mb-2" v-show="menutoggle.products">
                         <button
                             class=" w-[90%] sm:w-[86%] h-10 text-xs font-bold border-l border-neutral-700 text-left px-7 hover:bg-neutral-800 relative"
                             :class="toggleclass && 'hidden'"
@@ -43,6 +43,24 @@
                         >Delete</button>
                     </div>
                 </transition>
+            </RouterLink>
+            <RouterLink :to="{ name:'homeview' }" class="link flex flex-col w-full relative bg-neutral-900" @click="mainLinks">
+                <div
+                    class="main-link flex flex-row items-center w-full h-14  gap-2 px-3 bg-neutral-800 hover:bg-neutral-700 duration-200 border-y border-neutral-700"
+                    :class="toggleclass && 'justify-center'"
+                >
+                    <div class="i-mdi-home text-xl sm:text-2xl" />
+                    <p class=" sm:font-bold text-base sm:text-base" :class="toggleclass && 'hidden'">Dashboard</p>
+                </div>
+            </RouterLink>
+            <RouterLink :to="{ name:'homeview' }" class="link flex flex-col w-full relative bg-neutral-900" @click="mainLinks">
+                <div
+                    class="main-link flex flex-row items-center w-full h-14  gap-2 px-3 bg-neutral-800 hover:bg-neutral-700 duration-200 border-y border-neutral-700"
+                    :class="toggleclass && 'justify-center'"
+                >
+                    <div class="i-mdi-home text-xl sm:text-2xl" />
+                    <p class=" sm:font-bold text-base sm:text-base" :class="toggleclass && 'hidden'">Dashboard</p>
+                </div>
             </RouterLink>
         </section>
     </nav>
@@ -72,18 +90,18 @@ const emit = defineEmits<{
 
 // event on mounted listeners 
 
-const printOut = ():void => {
+const showSideMenuOut = ():void => {
     let screenwidth: number = window.outerWidth;
     if ( screenwidth <= 930 ) {
         showtogglebtns.value = true;
-        toggleclass.value = true;
+        toggleclass.value = false;
     } else {
         showtogglebtns.value = false;
-        toggleclass.value = false;
+        toggleclass.value = true;
     }
 };
 
-window.addEventListener<"resize">('resize', printOut);
+window.addEventListener<"resize">('resize', showSideMenuOut);
 onMounted((): void => {
     let screenw: number = window.outerWidth;
     if ( screenw <= 930 ) {

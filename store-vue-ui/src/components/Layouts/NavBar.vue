@@ -1,5 +1,5 @@
 <template>
-    <header class="w-full bg-slate-100 h-14 flex items-center justify-between pl-1 pr-2">
+    <header class="w-full bg-slate-100 h-14 flex items-center justify-between pl-1 pr-2 shadow-zinc-100">
         <div class="right h-full flex items-center justify-center px-1 border-r border-zinc-400">
             <div class="i-mdi-drag text-4xl" />
         </div>
