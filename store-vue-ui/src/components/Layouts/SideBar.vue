@@ -94,10 +94,14 @@ const showSideMenuOut = ():void => {
     let screenwidth: number = window.outerWidth;
     if ( screenwidth <= 930 ) {
         showtogglebtns.value = true;
-        toggleclass.value = false;
+        if (toggleclass.value == false) {
+            toggleclass.value = true;
+        }
     } else {
         showtogglebtns.value = false;
-        toggleclass.value = true;
+        if (toggleclass.value == true) {
+            toggleclass.value = false;
+        }
     }
 };
 

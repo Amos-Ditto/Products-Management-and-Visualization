@@ -61,6 +61,7 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'core.CustomUser'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
