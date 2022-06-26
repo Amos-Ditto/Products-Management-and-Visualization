@@ -3,11 +3,15 @@
     <section class="w-full h-full bg-inherit">
       <RouterView />
     </section>
+    <Teleport to="body">
+      <MainAuth />
+    </Teleport>
   </main>
 </template>
 
 <script setup lang="ts">
 import { RouterView } from "vue-router";
+import MainAuth from "./components/MainAuth.vue";
 
 </script>
 

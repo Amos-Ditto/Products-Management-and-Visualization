@@ -21,6 +21,9 @@ module.exports = {
         'height': 'height',
         'width': 'width',
         'rotate': 'rotate'
+      },
+      backgroundColor: {
+        'dark-opacity': 'rgba(0, 0, 0, 0.4)'
       }
     },
   },
