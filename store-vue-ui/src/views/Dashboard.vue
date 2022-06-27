@@ -6,6 +6,7 @@
         <template #default>
             <main class="w-full flex flex-col">
                 <NavBarVue @showLogin="showLoginModal"/>
+                {{ conditions.doubleCount }}
                 <router-view></router-view>
             </main>
         </template>
@@ -17,14 +18,19 @@ import { ref } from 'vue';
 import LayoutVue from '@/components/Layout.vue';
 import SideBar from '../components/Layouts/SideBar.vue';
 import NavBarVue from '@/components/Layouts/NavBar.vue';
+import useConditionStore from '@/stores/conditions'
 
 // Conditional data
 const reducedmenu = ref<boolean>(false);
 
 // Emits
-const emit = defineEmits<{
-    (event: "showLogin"): void;
-}>();
+// const emit = defineEmits<{
+//     (event: "showLogin"): void;
+// }>();
+
+// global Store
+const conditions = useConditionStore()
+
 
 // Conditional methods
 
@@ -33,6 +39,6 @@ const resizeSideMenu = ():void => {
 };
 
 const showLoginModal = (): void => {
-    emit("showLogin");
+    conditions.toggleAuth(conditions.$state, true);
 }
 </script>

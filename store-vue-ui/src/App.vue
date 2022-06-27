@@ -9,7 +9,7 @@
     </section>
     <Teleport to="body">
       <Transition name="auth">
-        <MainAuth @close-auth="closeModal" v-show="showauth" />
+        <MainAuth @close-auth="closeModal" v-show="condition.showauth" />
       </Transition>
     </Teleport>
   </main>
@@ -19,6 +19,10 @@
 import { ref } from "vue";
 import { RouterView } from "vue-router";
 import MainAuth from "./components/MainAuth.vue";
+import useConditionStore from "./stores/conditions";
+
+// Conditional Store
+const condition = useConditionStore();
 
 // Transition data
 const showauth = ref<boolean>(true);
@@ -27,6 +31,7 @@ const showauth = ref<boolean>(true);
 // Component methods
 
 const closeModal = (): void => {
+  condition.toggleAuth(condition.$state, false);
   showauth.value = false;
 }
 

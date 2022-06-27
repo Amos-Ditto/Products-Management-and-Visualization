@@ -103,7 +103,7 @@ const showLoginModal = ():void => {
     opacity: 0;
 }
 .popup-enter-active , .popup-leave-active {
-    transition: height 250ms ease-in-out, opacity 350ms ease;
+    transition: height 200ms ease-in-out, opacity 350ms ease;
     overflow: hidden;
 }
 </style>
