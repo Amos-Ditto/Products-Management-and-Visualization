@@ -1,9 +1,9 @@
 <template>
-    <header class="w-full bg-slate-100 h-14 flex items-center justify-between pl-1 pr-2 shadow-zinc-100">
-        <div class="right h-full flex items-center justify-center px-1 border-r border-zinc-400">
+    <header class="w-full bg-slate-100 h-16 flex items-center justify-between pl-1 pr-2 shadow-zinc-100">
+        <div class="right px-1 border-r border-zinc-400">
             <div class="i-mdi-drag text-4xl cursor-pointer" />
         </div>
-        <div class="left h-full flex items-center justify-center gap-x-2.5 px-2 py-1.5">
+        <div class="left gap-x-2.5 px-2 py-1.5">
             <div class="warning">
                 <div class="i-mdi-alert text-3xl cursor-pointer hover:scale-110" />
                 <span class="bg-yellow-600">0</span>
@@ -13,7 +13,7 @@
                 <span class="bg-green-500">0</span>
             </div>
             <div class="setting">
-                <div class="i-mdi-cog text-3xl cursor-pointer transition-rotate hover:rotate-90" @click="showSetting" />
+                <div class="i-mdi-cog text-3xl cursor-pointer hover:rotate-90" @click="showSetting" />
                 <Transition name="popup" @enter="enter" @after-enter="afterEnter" @leave="leave">
                     <Settings v-show="showsetting" @show-login="showLoginModal" />
                 </Transition>
@@ -69,11 +69,17 @@ const showLoginModal = ():void => {
 
 
 @layer components {
+    .right , .left {
+        @apply h-full flex items-center justify-center;
+    }
     .notification , .setting, .warning {
         @apply h-full flex items-center justify-center relative px-2 bg-slate-50 rounded-sm;
     }
     .notification span, .warning span{
         @apply flex justify-center items-center absolute top-0 right-1 p-2 w-[1.4rem] h-[1.4rem] rounded-lg text-slate-100;
+    }
+    .i-mdi-cog:hover {
+        transition: transform 300ms ease;
     }
 }
 .notification .i-mdi-bell:hover {

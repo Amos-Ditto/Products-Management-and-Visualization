@@ -6,7 +6,6 @@
         <template #default>
             <main class="w-full flex flex-col">
                 <NavBarVue @showLogin="showLoginModal"/>
-                {{ conditions.doubleCount }}
                 <router-view></router-view>
             </main>
         </template>
